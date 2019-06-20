@@ -1,2 +1,0 @@
-Description, DeviceID, FreeSpace, Size, SystemName
-Local Fixed Disk, C:, 14693437440, 208142331904, DESKTOP-JIN1
