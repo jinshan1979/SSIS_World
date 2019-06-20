@@ -1,0 +1,215 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/14/2019 10:14:05 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JIN1"
+  DTS:CreatorName="FAREAST\v-jizh10"
+  DTS:DTSID="{84D636F4-F811-488A-B6B5-EE4276B7B85F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="WorkFlow task"
+  DTS:PackageType="5"
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{4835D4BF-3818-4DA1-80D2-12E43C56B177}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[result.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F9BF29BD-64A9-42D3-93F9-72080A98C947}"
+      DTS:ObjectName="result.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\jinshan\SSISWork\TaskLearn\workflowTasks\result.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{0B91D352-9F5C-4882-B92D-04C4D553580E}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=smtp.yopmail.com;UseWindowsAuthentication=False;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[test queue]"
+      DTS:CreationName="MSMQ"
+      DTS:DTSID="{2423C276-0E78-42B3-974D-351BA486A602}"
+      DTS:ObjectName="test queue">
+      <DTS:ObjectData>
+        <MsmqConnectionManager
+          ConnectionString=".\private$\MSMQDemo" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WMI Connection Manager]"
+      DTS:CreationName="WMI"
+      DTS:DTSID="{B8CB768C-1784-49A1-804A-74B9DEC64F19}"
+      DTS:ObjectName="WMI Connection Manager">
+      <DTS:ObjectData>
+        <WmiConnectionManager
+          ConnectionString="ServerName=\\localhost;Namespace=\root\cimv2;UseNtAuth=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{509982C2-B5DC-4F4A-AF1F-03E55D0247E3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="startTime1">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2019 12:45:27 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute Child Package"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Child Package"
+      DTS:DTSID="{B82E96B9-0B53-4604-B188-FFEEF802857D}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Child Package"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>child.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail Task"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{8E128283-BEB6-4427-9495-0AA84874E7C2}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail Task"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{0B91D352-9F5C-4882-B92D-04C4D553580E}"
+          SendMailTask:From="jinshan1@126.com"
+          SendMailTask:To="jinshan2@yopmail.com"
+          SendMailTask:Subject="Test"
+          SendMailTask:MessageSource="Sent via SSIS task" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send MSMQ Messages"
+      DTS:CreationName="Microsoft.MessageQueueTask"
+      DTS:Description="Send Messages via MSMQ"
+      DTS:DTSID="{930FB575-2E90-40D2-B520-9E0F732624FE}"
+      DTS:ExecutableType="Microsoft.MessageQueueTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send MSMQ Messages"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <MessageQueueTask:MessageQueueTaskData
+          MessageQueueTask:CurrentPackageID="{84D636F4-F811-488A-B6B5-EE4276B7B85F}"
+          MessageQueueTask:QueuePath="test queue"
+          MessageQueueTask:StringMessage="This is my Message" xmlns:MessageQueueTask="www.microsoft.com/sqlserver/dts/tasks/messagequeuetask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Unzip customer file"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Unzip a file"
+      DTS:DTSID="{3b3392c7-12f3-4e3e-aa3c-58e44ededcd3}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Unzip customer file"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="powershell.exe"
+          RequireFullFileName="False"
+          Arguments="-nologo -noprofile -command &quot;Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('Customers.zip', '.');&quot;"
+          WorkingDirectory="C:\jinshan\SSISWork\TaskLearn\workflowTasks\"
+          WindowStyle="Hidden" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\WMI Data Reader Task"
+      DTS:CreationName="Microsoft.WmiDataReaderTask"
+      DTS:Description="WMI Data Reader Task"
+      DTS:DTSID="{1D87C84E-25BA-473D-AFC4-AF998CA1CC3C}"
+      DTS:ExecutableType="Microsoft.WmiDataReaderTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WMI Data Reader Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <WMIDRTaskData
+          WQLQuerySource="select FreeSpace, DeviceID, Size, SystemName,Description from win32_LogicalDisk where DeviceID = 'C:'"
+          Destination="{F9BF29BD-64A9-42D3-93F9-72080A98C947}"
+          OverwriteDestination="AppendToDestination"
+          WMIConnectionName="{B8CB768C-1784-49A1-804A-74B9DEC64F19}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\WMI Event Watcher Task"
+      DTS:CreationName="Microsoft.WmiEventWatcherTask"
+      DTS:Description="WMI Event Watcher Task"
+      DTS:DTSID="{E7130274-B615-416B-BB61-6F561B34E22D}"
+      DTS:ExecutableType="Microsoft.WmiEventWatcherTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WMI Event Watcher Task"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData />
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="183,46"
+          Id="Package\Execute Child Package"
+          TopLeft="45,87" />
+        <NodeLayout
+          Size="169,47"
+          Id="Package\Unzip customer file"
+          TopLeft="295,86" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Send MSMQ Messages"
+          TopLeft="532,92" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Send Mail Task"
+          TopLeft="828,97" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\WMI Data Reader Task"
+          TopLeft="50,182" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\WMI Event Watcher Task"
+          TopLeft="287,182" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

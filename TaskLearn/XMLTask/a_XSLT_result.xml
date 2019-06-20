@@ -1,0 +1,23 @@
+﻿<html>
+  <body>
+    <h2>From : To Collection</h2>
+    <table border="1">
+      <tr bgcolor="#9acd32">
+        <th align="left">From</th>
+        <th align="left">To</th>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
