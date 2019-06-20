@@ -1,0 +1,399 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2019 5:47:36 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JIN1"
+  DTS:CreatorName="FAREAST\v-jizh10"
+  DTS:DTSID="{5DD3E79B-B564-4C1B-A99C-053A3A51AD0B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="RDBMS Server Tasks"
+  DTS:PackageType="5"
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{EC1A344D-2594-4A06-A332-1A018EF65DC9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-JIN3.AdventureWorksDW.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{87C68531-7DA4-4F52-A8DB-80A46AB501D0}"
+      DTS:ObjectName="DESKTOP-JIN3.AdventureWorksDW.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-JIN3;User ID=sa;Initial Catalog=AdventureWorksDW;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPtNFaRTZkki+G+0A0RLnUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABc1c/Ji2dxENtsz8ELiS8NAAAAAASAAACgAAAAEAAAABHtmaicGHrq2vMSrEGcmpIYAAAAFy9yK4C+kpOZFgc850J36uBWpe/msdZtFAAAANzBALTlDeOcmCviUs1tiLJ0Ce3r</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-JIN3\TABULAR.AdventureWorks2017.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E45C9F39-949F-4426-9EDA-52984ACCDFA2}"
+      DTS:ObjectName="DESKTOP-JIN3\TABULAR.AdventureWorks2017.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-JIN3\TABULAR;User ID=sa;Initial Catalog=AdventureWorks2017;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPtNFaRTZkki+G+0A0RLnUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABSses3Rr/rjcSXitWgbzoQAAAAAASAAACgAAAAEAAAAPphSzOD4uQW596PWSDvlg8YAAAAhTyr+baioBQjruNVWNRFHehSlFjXtVBTFAAAAEBiCeapJbpn/TJc9nKvy2Ts+h4n</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[myzips.csv]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9D980750-6525-42F4-9215-8FE681CAB327}"
+      DTS:ObjectName="myzips.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="\\desktop-jin3\work\SSISWork\myzips.csv" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[updateZipCode.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6E739B57-3E3B-43D4-9F21-35930DBE0A58}"
+      DTS:ObjectName="updateZipCode.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\jinshan\SSISWork\TaskLearn\RDBMS_tasks\updateZipCode.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6BD83C14-4A00-4B96-BBB6-EC3C0446E209}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="carrier_tracking_number">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{61D72735-69EE-41AC-A1B3-073F884870A7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dLineTotal">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{90943533-9957-4CAC-B543-3A56FF65CEF6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dUnitPrice">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C137BD90-6243-49A4-939F-BB27C3D1581A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="iOrderQty">
+      <DTS:VariableValue
+        DTS:DataType="2">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DEE88DB4-30EE-4AEB-8925-0DA3E09DEDE0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LineTotal">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{28C297EA-088D-4E33-8301-C52CEA99B6FC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="orderQty">
+      <DTS:VariableValue
+        DTS:DataType="2">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0E0F7DF2-F204-4E9C-9DD0-DBFC49BE8696}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="oResults">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B8B552B4-C0F1-433B-98AD-94954669F5B8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="sCarrierRouter">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BCDD34CF-B7BE-4A0A-8770-1898A36842C7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="unitprice">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{27630F06-366E-45D1-BC05-9E9EF4BBBF9A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ZipCode">
+      <DTS:VariableValue
+        DTS:DataType="8">34997</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\exec SP with output"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="exec SP with output"
+      DTS:DTSID="{9F36F9E8-8214-46F0-9BEE-8771668C59C5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="exec SP with output"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E45C9F39-949F-4426-9EDA-52984ACCDFA2}"
+          SQLTask:SqlStatementSource="exec usp_GetTop1SalesOrderDetail ?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::carrier_tracking_number"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::LineTotal"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="5"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::orderQty"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="2"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::unitprice"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="5"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Store Procedure"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute Store Procedure"
+      DTS:DTSID="{7D995B99-6DDD-4F03-889A-E9107096DDB1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Store Procedure"
+      DTS:ThreadHint="6">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E45C9F39-949F-4426-9EDA-52984ACCDFA2}"
+          SQLTask:SqlStatementSource="Execute usp_UpdatePersonAddressModifyDate ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::ContainerStartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Zip Codes"
+      DTS:CreationName="Microsoft.BulkInsertTask"
+      DTS:Description="Load Zip Codes from a flat file"
+      DTS:DTSID="{FCF8F823-6085-4FB7-9586-5041BA0AEB35}"
+      DTS:ExecutableType="Microsoft.BulkInsertTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Zip Codes"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <BulkInsertTask:BulkInsertTaskData
+          BulkInsertTask:SourceConnectionName="{9D980750-6525-42F4-9215-8FE681CAB327}"
+          BulkInsertTask:DestinationConnectionName="{87C68531-7DA4-4F52-A8DB-80A46AB501D0}"
+          BulkInsertTask:DestinationTableName="[dbo].[Process_ZipCode]"
+          BulkInsertTask:FieldTerminator="Comma {,}" xmlns:BulkInsertTask="www.microsoft.com/sqlserver/dts/tasks/bulkinserttask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Return mulitple rows"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Return mulitple rows"
+      DTS:DTSID="{10A2DBEF-DB00-40C9-A859-6F8ED1F1101A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Return mulitple rows"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E45C9F39-949F-4426-9EDA-52984ACCDFA2}"
+          SQLTask:SqlStatementSource="select&#xA;CarrierTrackingNumber,&#xA;LineTotal,&#xA;OrderQty,&#xA;UnitPrice&#xA;from [Sales].[SalesOrderDetail]"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::oResults" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Return single row"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Return single row "
+      DTS:DTSID="{7CD90772-329E-4056-AD97-D90F38245790}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Return single row"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E45C9F39-949F-4426-9EDA-52984ACCDFA2}"
+          SQLTask:SqlStatementSource="select top 1 &#xA;CarrierTrackingNumber,&#xA;LineTotal,&#xA;OrderQty,&#xA;UnitPrice&#xA;from [Sales].[SalesOrderDetail]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CarrierTrackingNumber"
+            SQLTask:DtsVariableName="User::sCarrierRouter" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LineTotal"
+            SQLTask:DtsVariableName="User::dLineTotal" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="UnitPrice"
+            SQLTask:DtsVariableName="User::dUnitPrice" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="OrderQty"
+            SQLTask:DtsVariableName="User::iOrderQty" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update ZipCode"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Update ZipCode with parameter"
+      DTS:DTSID="{A588BBAE-D081-4B7C-8300-9B9AF03336EB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update ZipCode"
+      DTS:ThreadHint="5">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{87C68531-7DA4-4F52-A8DB-80A46AB501D0}"
+          SQLTask:SqlStatementSource="update Process_ZipCode set ZipName = ZipName +'_Test' where ZipCode = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::ZipCode"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update ZipCode with File"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Update ZipCode with File"
+      DTS:DTSID="{888EAB26-E233-48CC-811A-12F445D1BC3C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update ZipCode with File"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{87C68531-7DA4-4F52-A8DB-80A46AB501D0}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="updateZipCode.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::ZipCode"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Load Zip Codes"
+          TopLeft="96,24" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Update ZipCode"
+          TopLeft="287,17" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Update ZipCode with File"
+          TopLeft="514,14" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Return single row"
+          TopLeft="87,110" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Return mulitple rows"
+          TopLeft="318,112" />
+        <NodeLayout
+          Size="163,44"
+          Id="Package\Execute Store Procedure"
+          TopLeft="566,113" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\exec SP with output"
+          TopLeft="819,114" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
