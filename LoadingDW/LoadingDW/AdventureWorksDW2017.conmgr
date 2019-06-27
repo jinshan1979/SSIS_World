@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="AdventureWorksDW2017"
+  DTS:DTSID="{59B1EAE5-A441-4BE1-B376-E9EDFFEE11A9}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=desktop-jin3\tabular;User ID=sa;Initial Catalog=AdventureWorksDW2017;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPtNFaRTZkki+G+0A0RLnUwAAAAACAAAAAAADZgAAwAAAABAAAAC74EM8voiOp9QZ8V/zI5TVAAAAAASAAACgAAAAEAAAAPrduq+UL+g3F9lEAqnR6hN4AAAAUDZ2TluTot8YjGU00RYuhO9TBU6wkOPXx/VVHF5scCrxE7nMtueJg3+AhBn4MdrurOv2wAza0zHYOtunJMp31j6pQzdItQz2plqW3SRh2kOx0Vx/zDyRUunBXLyO2RaREyRjMajHG58eSRRStZeL3rLCF2WqUFbrFAAAAJGrjT+X12eSn1zgA13YqNPzwNY7</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

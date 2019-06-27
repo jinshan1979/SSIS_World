@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ADO_AdventureWorks2017"
+  DTS:DTSID="{ED44F873-179F-4652-AA74-F014F31050EF}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=desktop-jin3\tabular;User ID=sa;Initial Catalog=AdventureWorks2017;Persist Security Info=True;Application Name=SSIS-LoadingDW-{ED44F873-179F-4652-AA74-F014F31050EF}desktop-jin3\tabular.AdventureWorks2017.sa1;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPtNFaRTZkki+G+0A0RLnUwAAAAACAAAAAAADZgAAwAAAABAAAADIsyr6zaldK5b2Z1+cW0m/AAAAAASAAACgAAAAEAAAAPgK/yGkTTs5pQQ5lRk1WCB4AAAA3BK7rwNnYVNe4tIY7vDc3sQseHCbVAZY9XQRbUyFtqc8pmo+hYfHIQsBlqcb7ePg32dRukKHOeDuqtObttCl8HqIhIOt+DppK4q7W5cdDtEo5A2IqTASFykV5SCsx4rH16v33uHpD+GV5Agj60OHiWcF3fVtT6k/FAAAADRwk0xlUdYaDw8v3iHPyrp0B/kT</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
