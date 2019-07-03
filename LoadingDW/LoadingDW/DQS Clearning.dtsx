@@ -7,12 +7,12 @@
   DTS:CreatorName="FAREAST\v-jizh10"
   DTS:DTSID="{267986A2-5416-4D19-9C9E-AC9900C985FF}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1300.375"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
   DTS:LocaleID="1033"
   DTS:ObjectName="DQS Clearning"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{324870C0-0CEF-4E2B-9573-AA46456E35DD}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C45EC8B0-E8DB-4722-BC3D-984D9EC63FC5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,9 +33,6 @@
       DTS:ObjectName="DQS Cleansing Connection Manager.localhost">
       <DTS:ObjectData>
         <InnerObject>
-          <AccessTokenProvider
-            Type="12"
-            Value="" />
           <ServerName
             Type="8"
             Value="." />
@@ -87,7 +84,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -738,75 +735,17 @@
           Id="Package\Data Flow Task\DQS Cleansing"
           TopLeft="135,208" />
         <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task\Multicast 1"
+          TopLeft="271,306" />
+        <NodeLayout
           Size="146,42"
           Id="Package\Data Flow Task\Country_State"
           TopLeft="130,100" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="206,142">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,66"
-              Start="0,0"
-              End="0,58.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="120,42"
           Id="Package\Data Flow Task\Multicast"
           TopLeft="76,304" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[DQS Cleansing Output]"
-          TopLeft="209,250">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-73,54"
-              Start="0,0"
-              End="-73,46.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23"
-                    Point2="0,27"
-                    Point3="-4,27" />
-                  <mssgle:LineSegment
-                    End="-69,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-69,27"
-                    Point2="-73,27"
-                    Point3="-73,31" />
-                  <mssgle:LineSegment
-                    End="-73,46.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-44.5,32,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Data Flow Task\Multicast 1"
-          TopLeft="271,306" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[DQS Cleansing Error Output]"
           TopLeft="232.333333333333,250">
@@ -839,8 +778,64 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-19.3417057291666,27.7593582887701,142.350078125,16"
+              BoundingBox="-19.3417057291666,27.7593582887701,124.6127734375,11.6630859375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="206,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[DQS Cleansing Output]"
+          TopLeft="209,250">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-73,54"
+              Start="0,0"
+              End="-73,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="-4,27" />
+                  <mssgle:LineSegment
+                    End="-69,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-69,27"
+                    Point2="-73,27"
+                    Point3="-73,31" />
+                  <mssgle:LineSegment
+                    End="-73,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

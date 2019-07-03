@@ -8,7 +8,7 @@
       DTS:ConnectionString="Data Source=desktop-jin3\tabular;User ID=sa;Initial Catalog=AdventureWorks2017;Persist Security Info=True;Application Name=SSIS-LoadingDW-{ED44F873-179F-4652-AA74-F014F31050EF}desktop-jin3\tabular.AdventureWorks2017.sa1;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPtNFaRTZkki+G+0A0RLnUwAAAAACAAAAAAADZgAAwAAAABAAAADIsyr6zaldK5b2Z1+cW0m/AAAAAASAAACgAAAAEAAAAPgK/yGkTTs5pQQ5lRk1WCB4AAAA3BK7rwNnYVNe4tIY7vDc3sQseHCbVAZY9XQRbUyFtqc8pmo+hYfHIQsBlqcb7ePg32dRukKHOeDuqtObttCl8HqIhIOt+DppK4q7W5cdDtEo5A2IqTASFykV5SCsx4rH16v33uHpD+GV5Agj60OHiWcF3fVtT6k/FAAAADRwk0xlUdYaDw8v3iHPyrp0B/kT</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPtNFaRTZkki+G+0A0RLnUwAAAAACAAAAAAADZgAAwAAAABAAAACduU2ol+t6kve/zmZ80SsuAAAAAASAAACgAAAAEAAAAFW7Xw5RCyqnO4ViTOXNTUF4AAAAVwSmuFFU92Zj0slPODVTGdE6W3gbZ1/b0ZLpGSl/QnDwHgPdfLDEXDYiQsxMoLqipyoH2B+/+QrWn2q5h/RCeMpzG/4j6uw/pe5keJzHEZJz2siYidi5W2VoLOW3vgE5N8XPJoKXFdCljQDCGmMJGLkb5a/6caroFAAAAPf7P9U/whgIVljj1Sm+ACRlPO+g</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
