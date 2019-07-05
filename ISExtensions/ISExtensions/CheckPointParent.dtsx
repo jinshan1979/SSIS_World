@@ -1,0 +1,221 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CheckpointFileName="C:\jinshan\SSISWork\SSIS_World\ISExtensions\checkpoint.xml"
+  DTS:CheckpointUsage="1"
+  DTS:CreationDate="7/5/2019 10:10:29 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JIN1"
+  DTS:CreatorName="FAREAST\v-jizh10"
+  DTS:DTSID="{0CE19AD9-F699-496A-B9E6-C8D943BE411C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="CheckPointParent"
+  DTS:PackageType="5"
+  DTS:SaveCheckpoints="True"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{5F9155B2-3BA4-4461-9934-5F6E2C19D9AF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorks2017]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{48518087-FFFF-4102-B88C-65FDB17774D7}"
+      DTS:ObjectName="AdventureWorks2017">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-JIN3\TABULAR;User ID=sa;Initial Catalog=AdventureWorks2017;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPtNFaRTZkki+G+0A0RLnUwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAChV3Dedja/3Dsv/ahvV6TmAAAAAASAAACgAAAAEAAAABoerpCcqk/3oZBdNgUc+6YYAAAA5xl9UEseWqRflDAURKaDkZdygZy87BE7FAAAAErYroXrN2zw5MepOPSZSEI/TZjl</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5F5728A7-14C8-43C0-932C-27262A6405EE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{48518087-FFFF-4102-B88C-65FDB17774D7}"
+          SQLTask:SqlStatementSource="select 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Seq2"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{19B94CEA-97F5-4C45-A551-4B4AD8D18F36}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:FailParentOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Seq2">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Seq2\2"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1F69FF50-CB58-4818-B85B-AE5C79A12393}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="2"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{48518087-FFFF-4102-B88C-65FDB17774D7}"
+              SQLTask:SqlStatementSource="select 2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Seq2\3"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3ECD9865-9F85-4CAE-B2DD-0B2FBFEFA033}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="3"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{48518087-FFFF-4102-B88C-65FDB17774D7}"
+              SQLTask:SqlStatementSource="select 3" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Seq2.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{386E139E-AF66-42BE-AA52-FBB25C2B0045}"
+          DTS:From="Package\Seq2\2"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Seq2\3" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DB15EC5F-A162-48EE-B679-B647186D3AA2}"
+      DTS:From="Package\1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Seq2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="85,42"
+          Id="Package\1"
+          TopLeft="35,170" />
+        <NodeLayout
+          Size="85,42"
+          Id="Package\Seq2\2"
+          TopLeft="61,15" />
+        <NodeLayout
+          Size="85,42"
+          Id="Package\Seq2\3"
+          TopLeft="69,102" />
+        <EdgeLayout
+          Id="Package\Seq2.PrecedenceConstraints[Constraint]"
+          TopLeft="103.5,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8,45"
+              Start="0,0"
+              End="8,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="4,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4,22.5"
+                    Point2="8,22.5"
+                    Point3="8,26.5" />
+                  <mssgle:LineSegment
+                    End="8,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-13.9932421875,27.5,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="302,199"
+          Size="302,242"
+          Id="Package\Seq2"
+          TopLeft="303,73" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="120,192.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="183,0"
+              Start="0,0"
+              End="175.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="175.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="69.7567578125,5,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
