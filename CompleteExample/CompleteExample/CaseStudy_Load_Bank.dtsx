@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CaseStudy_Load_Bank"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{02855F9B-690C-4C63-943B-6A30F102FB0A}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{89A6F204-6731-4367-8B00-CA21F5F4C3F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -133,7 +133,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="LBErrorFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\error\201907110744398690000000.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\error\201907110947460750000000.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -164,7 +164,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="LBProcessedFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\processed\201907110744398700000000.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\processed\201907110947460760000000.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -259,7 +259,1586 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <pipeline
-              version="1" />
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map"
+                  componentClassID="Microsoft.CharacterMap"
+                  contactInfo="Character Map;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Specifies the string operations to apply."
+                  name="Character Map"
+                  usesDispositions="true"
+                  version="2">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Inputs[Character Map Input]"
+                      name="Character Map Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Inputs[Character Map Input].Columns[line]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="line"
+                          errorOrTruncationOperation="Map Column"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              dataType="System.UInt32"
+                              name="MapFlags"
+                              typeConverter="LCMappingType">512</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Outputs[Character Map Output]"
+                      exclusionGroup="1"
+                      name="Character Map Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Inputs[Character Map Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Outputs[Character Map Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Character Map Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Inputs[Character Map Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Outputs[Character Map Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Outputs[Character Map Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Outputs[Character Map Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Outputs[Character Map Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split for Header Check and Invoice"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input].Columns[line]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="line"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Header]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Header"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},1,1) == "H"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(line,1,1) == "H"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Check]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Check"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},1,1) == "C"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(line,1,1) == "C"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Invoice]"
+                      description="Output 3 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Invoice"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},1,1) == "I"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(line,1,1) == "I"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">2</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column Check"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Inputs[Derived Column Input].Columns[line]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="line"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[MatchingKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[MatchingKey]"
+                          name="MatchingKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)[TRIM]([SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},2,4))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)TRIM(SUBSTRING(line,2,4))</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[ReferenceData2]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[ReferenceData2]"
+                          name="ReferenceData2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)[TRIM]([SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},2,10))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)TRIM(SUBSTRING(line,2,10))</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[PaymentAmount]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[PaymentAmount]"
+                          name="PaymentAmount"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_CY)((DT_NUMERIC,11,2)[SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},15,8) / (DT_NUMERIC,11,2)100.00)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_CY)((DT_NUMERIC,11,2)SUBSTRING(line,15,8) / (DT_NUMERIC,11,2)100.00)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column Header"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output].Columns[LBCurrentFile]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output].Columns[LBCurrentFile]"
+                          name="LBCurrentFile"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,100)@[User::LBCurrentFile]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,100)@[User::LBCurrentFile]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output].Columns[BankBatchID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output].Columns[BankBatchID]"
+                          name="BankBatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_I4)@[User::BankBatchID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_I4)@[User::BankBatchID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column Invoice"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Inputs[Derived Column Input].Columns[line]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="80"
+                          cachedName="line"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[RawInvoiceNbr]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[RawInvoiceNbr]"
+                          name="RawInvoiceNbr"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)[TRIM]([SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},13,[LEN](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]}) - 13))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)TRIM(SUBSTRING(line,13,LEN(line) - 13))</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[MatchingKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[MatchingKey]"
+                          name="MatchingKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)[TRIM]([SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},2,4))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)TRIM(SUBSTRING(line,2,4))</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[ReferenceData1]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[ReferenceData1]"
+                          name="ReferenceData1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)[TRIM]([SUBSTRING](#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]},2,10))</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)TRIM(SUBSTRING(line,2,10))</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column to add BankBatchID"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Output].Columns[BankBatchID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Output].Columns[BankBatchID]"
+                          name="BankBatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::BankBatchID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::BankBatchID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Flat File  LockBox Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LockBox Flat File]"
+                      connectionManagerRefId="Package.ConnectionManagers[LockBox Flat File]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].ExternalColumns[line]"
+                          length="80"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].Columns[line]"
+                          name="line"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output].ExternalColumns[line]"
+                          codePage="1252"
+                          dataType="str"
+                          length="80"
+                          name="line" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file"
+                  componentClassID="Microsoft.Inserter"
+                  contactInfo="Import Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Reads data from files and adds it to columns in a data flow. For example, use an input column of file paths to import photographs from a directory."
+                  name="Import Column to store file"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Inputs[Import Column Input]"
+                      name="Import Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Inputs[Import Column Input].Columns[LBCurrentFile]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="LBCurrentFile"
+                          errorOrTruncationOperation="File Open"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output].Columns[LBCurrentFile]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the ID of the output column to receive the file data."
+                              name="FileDataColumnID">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Output].Columns[FileStreamToStore]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="TRUE if the file is expected to begin with a BOM"
+                              name="ExpectBOM">false</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Output]"
+                      exclusionGroup="1"
+                      name="Import Column Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Inputs[Import Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Output].Columns[FileStreamToStore]"
+                          dataType="nText"
+                          errorOrTruncationOperation="File Read"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Output].Columns[FileStreamToStore]"
+                          name="FileStreamToStore" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Import Column Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Inputs[Import Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices"
+                  componentClassID="Microsoft.MergeJoin"
+                  contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+                  name="Merge Join Checks and Invoices"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of join to perform."
+                      name="JoinType"
+                      typeConverter="JoinType">2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of columns in the ordering key."
+                      name="NumKeyColumns">1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the null values are treated as equal values."
+                      name="TreatNullsAsEqual">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Indicates the requested maximum buffers per input before blocking."
+                      name="MaxBuffersPerInput">5</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Left Input]"
+                      hasSideEffects="true"
+                      name="Merge Join Left Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Left Input].Columns[MatchingKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="MatchingKey"
+                          cachedSortKeyPosition="1"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[MatchingKey]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Left Input].Columns[PaymentAmount]"
+                          cachedDataType="cy"
+                          cachedName="PaymentAmount"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[PaymentAmount]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Left Input].Columns[ReferenceData2]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ReferenceData2"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[ReferenceData2]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Right Input]"
+                      hasSideEffects="true"
+                      name="Merge Join Right Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Right Input].Columns[MatchingKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="MatchingKey"
+                          cachedSortKeyPosition="1"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[MatchingKey]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Right Input].Columns[RawInvoiceNbr]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="RawInvoiceNbr"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[RawInvoiceNbr]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Right Input].Columns[ReferenceData1]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ReferenceData1"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[ReferenceData1]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output]"
+                      name="Merge Join Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[RawInvoiceNbr]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[RawInvoiceNbr]"
+                          name="RawInvoiceNbr">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Right Input].Columns[RawInvoiceNbr]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[ReferenceData1]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[ReferenceData1]"
+                          name="ReferenceData1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Right Input].Columns[ReferenceData1]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[PaymentAmount]"
+                          dataType="cy"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[PaymentAmount]"
+                          name="PaymentAmount">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Left Input].Columns[PaymentAmount]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[ReferenceData2]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[ReferenceData2]"
+                          name="ReferenceData2">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Left Input].Columns[ReferenceData2]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination Details"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[BankBatchDetail]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Connections[OleDbConnection]"
+                      connectionManagerID="{4640E420-BCC4-43C2-B694-EBB06412AE87}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[CaseStudyOLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].Columns[RawInvoiceNbr]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="RawInvoiceNbr"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[RawInvoiceNbr]"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[RawInvoiceNbr]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].Columns[ReferenceData1]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ReferenceData1"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceData1]"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[ReferenceData1]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].Columns[PaymentAmount]"
+                          cachedDataType="cy"
+                          cachedName="PaymentAmount"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[PaymentAmount]"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[PaymentAmount]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].Columns[ReferenceData2]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ReferenceData2"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceData2]"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output].Columns[ReferenceData2]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].Columns[BankBatchID]"
+                          cachedDataType="i4"
+                          cachedName="BankBatchID"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[BankBatchID]"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Output].Columns[BankBatchID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[BankBatchDtlID]"
+                          dataType="i4"
+                          name="BankBatchDtlID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[BankBatchID]"
+                          dataType="i4"
+                          name="BankBatchID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[RawInvoiceNbr]"
+                          dataType="wstr"
+                          length="50"
+                          name="RawInvoiceNbr" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[RawAccountNbr]"
+                          dataType="wstr"
+                          length="50"
+                          name="RawAccountNbr" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceData1]"
+                          dataType="wstr"
+                          length="50"
+                          name="ReferenceData1" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[ReferenceData2]"
+                          dataType="wstr"
+                          length="50"
+                          name="ReferenceData2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[MatchedInvoiceID]"
+                          dataType="i4"
+                          name="MatchedInvoiceID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[MatchedCustomerID]"
+                          dataType="i4"
+                          name="MatchedCustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[MatchedDate]"
+                          dataType="dbTimeStamp"
+                          name="MatchedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input].ExternalColumns[PaymentAmount]"
+                          dataType="cy"
+                          name="PaymentAmount" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="OLE DB Store Files steam"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update BankBatch set BatchFile = ? where BankBatchID = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Connections[OleDbConnection]"
+                      connectionManagerID="{4640E420-BCC4-43C2-B694-EBB06412AE87}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[CaseStudyOLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input].Columns[FileStreamToStore]"
+                          cachedDataType="nText"
+                          cachedName="FileStreamToStore"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Output].Columns[FileStreamToStore]" />
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input].Columns[BankBatchID]"
+                          cachedDataType="i4"
+                          cachedName="BankBatchID"
+                          externalMetadataColumnId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output].Columns[BankBatchID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="nText"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">193</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="i4"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort Check"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Inputs[Sort Input].Columns[MatchingKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="MatchingKey"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[MatchingKey]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Inputs[Sort Input].Columns[ReferenceData2]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ReferenceData2"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[ReferenceData2]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Inputs[Sort Input].Columns[PaymentAmount]"
+                          cachedDataType="cy"
+                          cachedName="PaymentAmount"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[PaymentAmount]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[MatchingKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[MatchingKey]"
+                          name="MatchingKey"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[MatchingKey]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[ReferenceData2]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[ReferenceData2]"
+                          name="ReferenceData2">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[ReferenceData2]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[PaymentAmount]"
+                          dataType="cy"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output].Columns[PaymentAmount]"
+                          name="PaymentAmount">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output].Columns[PaymentAmount]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort Invoice"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Inputs[Sort Input].Columns[RawInvoiceNbr]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="RawInvoiceNbr"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[RawInvoiceNbr]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Inputs[Sort Input].Columns[MatchingKey]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="MatchingKey"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[MatchingKey]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Inputs[Sort Input].Columns[ReferenceData1]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="ReferenceData1"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[ReferenceData1]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[RawInvoiceNbr]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[RawInvoiceNbr]"
+                          name="RawInvoiceNbr">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[RawInvoiceNbr]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[MatchingKey]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[MatchingKey]"
+                          name="MatchingKey"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[MatchingKey]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[ReferenceData1]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output].Columns[ReferenceData1]"
+                          name="ReferenceData1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output].Columns[ReferenceData1]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Character Map Output]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Inputs[Conditional Split Input]"
+                  name="Character Map Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Outputs[Character Map Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Check]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Inputs[Derived Column Input]"
+                  name="Check"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Check]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Inputs[Sort Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output1]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Inputs[Sort Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output2]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output3]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Inputs[Import Column Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Flat File Source Output]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map.Inputs[Character Map Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Header]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header.Inputs[Derived Column Input]"
+                  name="Header"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Header]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Import Column Output]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam.Inputs[OLE DB Command Input]"
+                  name="Import Column Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file.Outputs[Import Column Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Invoice]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice.Inputs[Derived Column Input]"
+                  name="Invoice"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice.Outputs[Invoice]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Merge Join Output]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID.Inputs[Derived Column Input]"
+                  name="Merge Join Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Outputs[Merge Join Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Sort Output]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Left Input]"
+                  name="Sort Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check.Outputs[Sort Output]" />
+                <path
+                  refId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Sort Output1]"
+                  endId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices.Inputs[Merge Join Right Input]"
+                  name="Sort Output"
+                  startId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice.Outputs[Sort Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -4894,6 +6473,461 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <TaskHost
+    design-time-name="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Flat File  LockBox Source"
+          TopLeft="83,39" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Character Map"
+          TopLeft="100,109" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Flat File Source Output]"
+          TopLeft="177.25,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="298,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Conditional Split for Header Check and Invoice"
+          TopLeft="165,177" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Character Map Output]"
+          TopLeft="173.5,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="140.5,26"
+              Start="0,0"
+              End="140.5,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="4,13" />
+                  <mssgle:LineSegment
+                    End="136.5,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="136.5,13"
+                    Point2="140.5,13"
+                    Point3="140.5,17" />
+                  <mssgle:LineSegment
+                    End="140.5,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Check"
+          TopLeft="41,267" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Check]"
+          TopLeft="241.5,219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-108,48"
+              Start="0,0"
+              End="-108,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2838137472284" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2838137472284"
+                    Point2="0,16.2838137472284"
+                    Point3="-4,16.2838137472284" />
+                  <mssgle:LineSegment
+                    End="-104,16.2838137472284" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-104,16.2838137472284"
+                    Point2="-108,16.2838137472284"
+                    Point3="-108,20.2838137472284" />
+                  <mssgle:LineSegment
+                    End="-108,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-68.161640625,21.2838137472284,28.32328125,9.7294921875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Invoice"
+          TopLeft="244,268" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Invoice]"
+          TopLeft="314,219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.5,49"
+              Start="0,0"
+              End="25.5,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5"
+                    Point2="0,24.5"
+                    Point3="4,24.5" />
+                  <mssgle:LineSegment
+                    End="21.5,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.5,24.5"
+                    Point2="25.5,24.5"
+                    Point3="25.5,28.5" />
+                  <mssgle:LineSegment
+                    End="25.5,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-3.83294921875,29.5,33.1658984375,9.470703125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Check"
+          TopLeft="82,335" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output]"
+          TopLeft="133.5,309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.5,26"
+              Start="0,0"
+              End="13.5,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="4,13" />
+                  <mssgle:LineSegment
+                    End="9.5,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.5,13"
+                    Point2="13.5,13"
+                    Point3="13.5,17" />
+                  <mssgle:LineSegment
+                    End="13.5,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Sort Invoice"
+          TopLeft="266,333" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output1]"
+          TopLeft="336.5,310">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Merge Join Checks and Invoices"
+          TopLeft="145,424" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Sort Output]"
+          TopLeft="147,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.3333333333333,47"
+              Start="0,0"
+              End="56.3333333333333,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9385863267671" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9385863267671"
+                    Point2="0,27.9385863267671"
+                    Point3="4,27.9385863267671" />
+                  <mssgle:LineSegment
+                    End="52.3333333333333,27.9385863267671" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.3333333333333,27.9385863267671"
+                    Point2="56.3333333333333,27.9385863267671"
+                    Point3="56.3333333333333,31.9385863267671" />
+                  <mssgle:LineSegment
+                    End="56.3333333333333,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Sort Output1]"
+          TopLeft="333.5,375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75.8333333333334,49"
+              Start="0,0"
+              End="-75.8333333333334,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.1274623406721" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.1274623406721"
+                    Point2="0,29.1274623406721"
+                    Point3="-4,29.1274623406721" />
+                  <mssgle:LineSegment
+                    End="-71.8333333333334,29.1274623406721" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.8333333333334,29.1274623406721"
+                    Point2="-75.8333333333334,29.1274623406721"
+                    Point3="-75.8333333333334,33.1274623406721" />
+                  <mssgle:LineSegment
+                    End="-75.8333333333334,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column to add BankBatchID"
+          TopLeft="109,501" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Merge Join Output]"
+          TopLeft="232.5,466">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details"
+          TopLeft="144,574" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output2]"
+          TopLeft="234.5,543">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,31"
+              Start="0,0"
+              End="12.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="8.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,15.5"
+                    Point2="12.5,15.5"
+                    Point3="12.5,19.5" />
+                  <mssgle:LineSegment
+                    End="12.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Data Flow LockBox Detail Data Load&#xD;&#xA;Purpose: To import lockbox details data&#xD;&#xA;into"
+          ParentId="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load"
+          FontInfo="{assembly:Null}"
+          Size="238,72"
+          Id="f5826b93-4a89-4b41-946c-e9f00465f108"
+          TopLeft="635,566" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Derived Column Header"
+          TopLeft="469,267" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Header]"
+          TopLeft="386.5,219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="178,48"
+              Start="0,0"
+              End="178,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2838137472284" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2838137472284"
+                    Point2="0,16.2838137472284"
+                    Point3="4,16.2838137472284" />
+                  <mssgle:LineSegment
+                    End="174,16.2838137472284" />
+                  <mssgle:CubicBezierSegment
+                    Point1="174,16.2838137472284"
+                    Point2="178,16.2838137472284"
+                    Point3="178,20.2838137472284" />
+                  <mssgle:LineSegment
+                    End="178,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="72.56630859375,21.2838137472284,32.8673828125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\Import Column to store file"
+          TopLeft="459,356" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Derived Column Output3]"
+          TopLeft="563.5,309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Store Files steam"
+          TopLeft="464,473" />
+        <EdgeLayout
+          Id="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load.Paths[Import Column Output]"
+          TopLeft="563,398">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Foreach LockBox Loop Container\Data Flow LockBox Validation and Header Info\OLE DB Destination Error Log">
     <Properties>
@@ -4927,6 +6961,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach LockBox Loop Container\Data Flow LockBox Detail Data Load\OLE DB Destination Details">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
