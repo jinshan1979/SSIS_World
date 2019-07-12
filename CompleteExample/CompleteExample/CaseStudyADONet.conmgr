@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CaseStudyADONet"
+  DTS:DTSID="{9936B323-4304-4A14-8A2A-2E5DDBB108E0}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::CaseStudyADONet_ConnectionString]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=desktop-jin3\tabular;User ID=sa;Initial Catalog=CaseStudy;Password = bjsfdx1q!Q;Application Name=SSIS-CompleteExample-{9936B323-4304-4A14-8A2A-2E5DDBB108E0}desktop-jin3\tabular.CaseStudy.sa1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

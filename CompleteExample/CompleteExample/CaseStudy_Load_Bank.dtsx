@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CaseStudy_Load_Bank"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{89A6F204-6731-4367-8B00-CA21F5F4C3F7}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{99174BA4-4BDB-4056-80BA-1866DCD51FD5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -133,7 +133,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="LBErrorFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\error\201907110947460750000000.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\error\201907110957523740000000.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -164,7 +164,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="LBProcessedFile">
       <DTS:VariableValue
-        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\processed\201907110947460760000000.txt</DTS:VariableValue>
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\lockbox\processed\201907110957523750000000.txt</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -4928,7 +4928,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           DTS:refId="Package\Foreach LockBox Loop Container\Execute SQL Task to add bank batch Hdr"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
           DTS:DTSID="{661462E2-75AA-4B63-ACF0-A0B00D1A98AA}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"

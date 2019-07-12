@@ -1,0 +1,2124 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/12/2019 9:39:07 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JIN1"
+  DTS:CreatorName="FAREAST\v-jizh10"
+  DTS:DTSID="{5299941B-427D-43CC-8717-32C3CB8936C2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="CaseStudy_Load_ACH"
+  DTS:PackageType="5"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{579C62F4-D468-4276-B9DD-3387D9967E03}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{0F2054F2-3D54-4C52-9E87-581C9B460FC5}"
+      DTS:ObjectName="AchBaseFilePath">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{96639548-D9B9-482B-906E-CC48459D5F5F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AchCurrentFile">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach\sampleach.xml</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7B2E87EF-3304-4E9B-90F6-CAFFCEB8BAE2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::AchErrorFilePath] +&quot;\\&quot;+ REPLACE(REPLACE(REPLACE(REPLACE( (DT_WSTR, 50) GETUTCDATE() , &quot;-&quot;,&quot;&quot; ),&quot; &quot;,&quot;&quot;),&quot;:&quot;,&quot;&quot;),&quot;.&quot;,&quot;&quot;)+ (DT_WSTR, 50)  @[User::FileBytes]+ &quot;.txt&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AchErrorFile">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach\error\201907121000567110000000.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A4A854A2-87B0-4AE3-83A2-DA300AFFCC17}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::AchBaseFilePath]+&quot;\\error&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AchErrorFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach\error</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B0549542-9463-406A-8B6E-BF8769DC854D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AchImportType">
+      <DTS:VariableValue
+        DTS:DataType="8">ACH</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4D14BDC6-D795-4C30-84CB-A54EE7006807}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::AchProcessedFilePath] +&quot;\\&quot;+ REPLACE(REPLACE(REPLACE(REPLACE( (DT_WSTR, 50) GETUTCDATE() , &quot;-&quot;,&quot;&quot; ),&quot; &quot;,&quot;&quot;),&quot;:&quot;,&quot;&quot;),&quot;.&quot;,&quot;&quot;)+ (DT_WSTR, 50)  @[User::FileBytes]+ &quot;.txt&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AchProcessedFile">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach\processed\201907121000567110000000.txt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D2330134-5F48-4BC5-A65E-EE96C876CA05}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::AchBaseFilePath]+&quot;\\processed&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AchProcessedFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach\processed</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D7C446D4-88CE-44C8-9D73-E50C145B1D02}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BankBatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E5B26D2B-9AE5-449A-B37C-D9BB045FE972}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BankBatchNbr">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{788B19BA-650A-41BB-9560-D003C6E3D993}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchItems">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{42386452-C482-4F93-8BEC-D5914AD8814C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchTotal">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5D6B9B5B-EFA9-4AB8-87BE-21BF7D29212F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DepositeDate">
+      <DTS:VariableValue
+        DTS:DataType="7">7/12/2019 9:43:56 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5EB95E7A-5FFD-4E15-8DA2-75C5E686DFAD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileBytes">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\File System Task-ACH Error folder"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{978B0C8C-1A0D-44A5-AE29-943636FA1333}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="File System Task-ACH Error folder"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::AchErrorFilePath"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\File System Task-ACH Processed folder"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{D9BBA4E2-8218-4D4B-B06D-BF7DDFC7F042}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="File System Task-ACH Processed folder"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="User::AchProcessedFilePath"
+          TaskIsSourceVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container-ACH files"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{9E9C6660-E46C-4CF4-A8B2-91DBFC5685F4}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container-ACH files">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{004414F7-D616-4F70-ACD2-06C26FB579CD}"
+        DTS:ObjectName="{004414F7-D616-4F70-ACD2-06C26FB579CD}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[$Package::AchBaseFilePath]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach" />
+            <FEFEProperty
+              FileSpec="*.xml" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container-ACH files\Data Flow Task ACH details data load"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{9EFD023C-AF81-4DE8-B2F2-8ED652B22120}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task ACH details data load"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E9A1D5B3-2BBD-443F-A3E9-224D3BAEC779}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task to Validate File and Header"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Details"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;11"
+                  description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+                  name="Script Component Details"
+                  version="11">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Stores the source code of the component"
+                      isArray="true"
+                      name="SourceCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Stores the binary representation of the component"
+                      isArray="true"
+                      name="BinaryCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                      name="VSTAProjectName"
+                      typeConverter="NOTBROWSABLE">SC_143f27480f5a4465a9f7c0732d0a80cb</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the programming language used by the script."
+                      name="ScriptLanguage"
+                      typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read-only variables."
+                      name="ReadOnlyVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read/write variables."
+                      name="ReadWriteVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="List of breakpoints present on the script."
+                      isArray="true"
+                      name="BreakpointCollection"
+                      typeConverter="NOTBROWSABLE">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Checksum to match component metedata against compiled codes."
+                      name="MetadataChecksum140"
+                      typeConverter="NOTBROWSABLE"></property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Details.Inputs[Input 0]"
+                      hasSideEffects="true"
+                      name="Input 0">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Details.Outputs[Output 0]"
+                      name="Output 0"
+                      synchronousInputId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Details.Inputs[Input 0]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Header"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;11"
+                  description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+                  name="Script Component Header"
+                  version="11">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Stores the source code of the component"
+                      isArray="true"
+                      name="SourceCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Stores the binary representation of the component"
+                      isArray="true"
+                      name="BinaryCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                      name="VSTAProjectName"
+                      typeConverter="NOTBROWSABLE">SC_73d5d00cd57d423b95927ebf1692f55d</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the programming language used by the script."
+                      name="ScriptLanguage"
+                      typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read-only variables."
+                      name="ReadOnlyVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read/write variables."
+                      name="ReadWriteVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="List of breakpoints present on the script."
+                      isArray="true"
+                      name="BreakpointCollection"
+                      typeConverter="NOTBROWSABLE">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Checksum to match component metedata against compiled codes."
+                      name="MetadataChecksum140"
+                      typeConverter="NOTBROWSABLE"></property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Header.Inputs[Input 0]"
+                      hasSideEffects="true"
+                      name="Input 0">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Header.Outputs[Output 0]"
+                      name="Output 0"
+                      synchronousInputId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Header.Inputs[Input 0]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element.;Microsoft Corporation;Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element."
+                  name="XML Source for ACH"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.XmlSourceAdapter</property>
+                    <property
+                      dataType="System.String"
+                      description="The XML data used by the XML source adapter."
+                      expressionType="Notify"
+                      name="XMLData"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable used by the XML source adapter to specify XML data."
+                      name="XMLDataVariable">User::AchCurrentFile</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Defines how the XML source adapter gets XML data."
+                      name="AccessMode">1</property>
+                    <property
+                      dataType="System.String"
+                      description="The XML schema definition used by the XML source adapter."
+                      expressionType="Notify"
+                      name="XMLSchemaDefinition">C:\jinshan\SSISWork\SSIS_World\CompleteExample\ach\ach.xsd</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Identifies whether or not to use inline schema."
+                      name="UseInlineSchema">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Defines how XML integer types are mapped."
+                      name="XMLIntegerMapping"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.XmlSourceAdapter+XMLIntegerMappingConverter">0</property>
+                  </properties>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER]"
+                      name="HEADER">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">HEADER</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[ID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[ID]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[ID]"
+                          name="ID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[TOTALDEPOSIT]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[TOTALDEPOSIT]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[TOTALDEPOSIT]"
+                          name="TOTALDEPOSIT"
+                          scale="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[DEPOSITDATE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[DEPOSITDATE]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[DEPOSITDATE]"
+                          name="DEPOSITDATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[TOTALTRANS]"
+                          dataType="ui4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[TOTALTRANS]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].Columns[TOTALTRANS]"
+                          name="TOTALTRANS"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[ID]"
+                          dataType="wstr"
+                          length="255"
+                          name="ID">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[TOTALDEPOSIT]"
+                          dataType="decimal"
+                          name="TOTALDEPOSIT"
+                          scale="10">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Decimal</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[DEPOSITDATE]"
+                          dataType="wstr"
+                          length="255"
+                          name="DEPOSITDATE">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER].ExternalColumns[TOTALTRANS]"
+                          dataType="ui4"
+                          name="TOTALTRANS">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.UInt32</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output]"
+                      isErrorOut="true"
+                      name="HEADER Error Output">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">HEADER</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[ID]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[ID]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[ID]"
+                          name="ID" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[TOTALDEPOSIT]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[TOTALDEPOSIT]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[TOTALDEPOSIT]"
+                          name="TOTALDEPOSIT" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[DEPOSITDATE]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[DEPOSITDATE]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[DEPOSITDATE]"
+                          name="DEPOSITDATE" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[TOTALTRANS]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[TOTALTRANS]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[TOTALTRANS]"
+                          name="TOTALTRANS" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[ID]"
+                          dataType="nText"
+                          name="ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[TOTALDEPOSIT]"
+                          dataType="nText"
+                          name="TOTALDEPOSIT" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[DEPOSITDATE]"
+                          dataType="nText"
+                          name="DEPOSITDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER Error Output].ExternalColumns[TOTALTRANS]"
+                          dataType="nText"
+                          name="TOTALTRANS" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL]"
+                      name="DETAIL">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">DETAIL</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[AMOUNT]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[AMOUNT]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[AMOUNT]"
+                          name="AMOUNT"
+                          scale="10"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[DESC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[DESC]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[DESC]"
+                          name="DESC"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[RECEIVEDDATE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[RECEIVEDDATE]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[RECEIVEDDATE]"
+                          name="RECEIVEDDATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[POSTEDDATE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[POSTEDDATE]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].Columns[POSTEDDATE]"
+                          name="POSTEDDATE"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[AMOUNT]"
+                          dataType="decimal"
+                          name="AMOUNT"
+                          scale="10">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.Decimal</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[DESC]"
+                          dataType="wstr"
+                          length="255"
+                          name="DESC">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[RECEIVEDDATE]"
+                          dataType="wstr"
+                          length="255"
+                          name="RECEIVEDDATE">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL].ExternalColumns[POSTEDDATE]"
+                          dataType="wstr"
+                          length="255"
+                          name="POSTEDDATE">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CLRType">System.String</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output]"
+                      isErrorOut="true"
+                      name="DETAIL Error Output">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Identifies the rowset associated with the output."
+                          name="RowsetID">DETAIL</property>
+                      </properties>
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[AMOUNT]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[AMOUNT]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[AMOUNT]"
+                          name="AMOUNT" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[DESC]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[DESC]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[DESC]"
+                          name="DESC" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[RECEIVEDDATE]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[RECEIVEDDATE]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[RECEIVEDDATE]"
+                          name="RECEIVEDDATE" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[POSTEDDATE]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[POSTEDDATE]"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[POSTEDDATE]"
+                          name="POSTEDDATE" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[AMOUNT]"
+                          dataType="nText"
+                          name="AMOUNT" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[DESC]"
+                          dataType="nText"
+                          name="DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[RECEIVEDDATE]"
+                          dataType="nText"
+                          name="RECEIVEDDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL Error Output].ExternalColumns[POSTEDDATE]"
+                          dataType="nText"
+                          name="POSTEDDATE" />
+                      </externalMetadataColumns>
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header.Paths[DETAIL]"
+                  endId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Details.Inputs[Input 0]"
+                  name="DETAIL"
+                  startId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[DETAIL]" />
+                <path
+                  refId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header.Paths[HEADER]"
+                  endId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Header.Inputs[Input 0]"
+                  name="HEADER"
+                  startId="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH.Outputs[HEADER]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container-ACH files\Execute SQL Task to add bank batch Hdr"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{6CCB77F0-A885-4806-98E2-86FBABE4112C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task to add bank batch Hdr"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{9936B323-4304-4A14-8A2A-2E5DDBB108E0}"
+              SQLTask:SqlStatementSource="EXECUTE  [dbo].[usp_BankBatch_Add] &#xA;   @BankBatchID OUTPUT&#xA;  ,@BankBatchNbr&#xA;  ,@DepositDate&#xA;  ,@ReceivedDate&#xA;  ,@BatchTotal&#xA;  ,@BatchItems&#xA;  ,@FileBytes&#xA;  ,@FullFilePath&#xA;  ,@ImportType" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@BankBatchID"
+                SQLTask:DtsVariableName="User::BankBatchID"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@BankBatchNbr"
+                SQLTask:DtsVariableName="User::BankBatchNbr"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@DepositDate"
+                SQLTask:DtsVariableName="User::DepositeDate"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="6"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@ReceivedDate"
+                SQLTask:DtsVariableName="System::ContainerStartTime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="6"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@BatchTotal"
+                SQLTask:DtsVariableName="User::BatchTotal"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="4"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@BatchItems"
+                SQLTask:DtsVariableName="User::BatchItems"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@FileBytes"
+                SQLTask:DtsVariableName="User::FileBytes"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="8"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@FullFilePath"
+                SQLTask:DtsVariableName="User::AchCurrentFile"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@ImportType"
+                SQLTask:DtsVariableName="User::AchImportType"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container-ACH files\File System Task Error Folder"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{7D9262C5-691A-42C7-86F8-7ACE91764C2B}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Task Error Folder"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="RenameFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::AchCurrentFile"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::AchErrorFile"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container-ACH files\File System Task Processed folder"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{B183F6EA-2702-4004-B1FF-59E1B08AB85E}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Task Processed folder"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="RenameFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::AchCurrentFile"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::AchProcessedFile"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container-ACH files\Script Task to set ACH variables"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Script Task"
+          DTS:DTSID="{BF7FB830-D081-4F26-8C76-99A6FB2E80E2}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Script Task to set ACH variables"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_b65ed0e5559d46d1911c2334ef464b81"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp"
+              ReadOnlyVariables="User::AchCurrentFile"
+              ReadWriteVariables="User::BankBatchID,User::BankBatchNbr,User::BatchItems,User::BatchTotal,User::DepositeDate,User::FileBytes">
+              <ProjectItem
+                Name="Properties\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="ST_b65ed0e5559d46d1911c2334ef464b81.csproj"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c17abc95-9a56-4b0c-8c8b-a2f848a183ef}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_b65ed0e5559d46d1911c2334ef464b81</RootNamespace>
+    <AssemblyName>ST_b65ed0e5559d46d1911c2334ef464b81</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+         <Generator>ResXFileCodeGenerator</Generator>
+         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+             <AutoGen>True</AutoGen>
+         <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+         <Generator>SettingsSingleFileGenerator</Generator>
+         <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+         <AutoGen>True</AutoGen>
+         <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+         <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask"
+                           HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}"
+                           ApplicationType="usd"
+                           Language="cs"
+                           TemplatesPath=""
+                           DebugInfoCommandLine=""
+                           DebugInfoWorkingDir=""
+                           IconImageList=""/>
+        <Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex="">
+        </Host>
+        <ProjectClient>
+            <HostIdentifier>SSIS_ST130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b65ed0e5559d46d1911c2334ef464b81.Properties.Settings.get_Default():ST_b65ed0e5559d46d1911c2334ef464b81.Properties.Sett" +
+    "ings")]
+
+namespace ST_b65ed0e5559d46d1911c2334ef464b81.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <ProjectItem
+                Name="ScriptMain.cs"
+                Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+#endregion
+
+namespace ST_b65ed0e5559d46d1911c2334ef464b81
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            // TODO: Add your code here
+            Int64 lDefault = 0;
+            string sNewFile = string.Empty;
+            bool bValule = false;
+
+            try
+            {
+                ResetVariables();
+
+                FileInfo oFile = new FileInfo(Dts.Variables["User::AchCurrentFile"].Value.ToString());
+                Dts.Variables["FileBytes"].Value = oFile.Length;
+                Dts.Events.FireInformation(0, "Script to Var: ", "File Bytes Found: " + oFile.Length.ToString(), "", 0, ref bValule);
+
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            catch (Exception ex)
+            {
+                Dts.Events.FireError(0, "Script to Var: ", ex.ToString(), "", 0);
+                Dts.Variables["FileBytes"].Value = lDefault;
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+			
+		}
+
+        public void ResetVariables()
+        {
+            Dts.Variables["BankBatchID"].Value = System.Convert.ToInt32(0);
+            Dts.Variables["BankBatchNbr"].Value = "";
+            Dts.Variables["BatchItems"].Value = System.Convert.ToInt64(0);
+            Dts.Variables["BatchTotal"].Value = System.Convert.ToDouble(0);
+            Dts.Variables["DepositeDate"].Value = DateTime.MinValue;
+            Dts.Variables["FileBytes"].Value = System.Convert.ToInt64(0);
+
+        }
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:Language>msBuild</msb:Language>
+		<msb:CodeName>ST_b65ed0e5559d46d1911c2334ef464b81</msb:CodeName>
+		<msb:DisplayName>ST_b65ed0e5559d46d1911c2334ef464b81</msb:DisplayName>
+		<msb:ProjectId>{A858F94A-8036-4272-96DB-6D375629982A}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="ST_b65ed0e5559d46d1911c2334ef464b81.csproj"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="ScriptMain.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\AssemblyInfo.cs"
+                Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_b65ed0e5559d46d1911c2334ef464b81")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_b65ed0e5559d46d1911c2334ef464b81")]
+[assembly: AssemblyCopyright("Copyright @  2019")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="Properties\Resources.Designer.cs"
+                Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b65ed0e5559d46d1911c2334ef464b81.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b65ed0e5559d46d1911c2334ef464b81.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_b65ed0e5559d46d1911c2334ef464b81.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_b65ed0e5559d46d1911c2334ef464b81.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_b65ed0e5559d46d1911c2334ef464b81.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+              <BinaryItem
+                Name="ST_b65ed0e5559d46d1911c2334ef464b81.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAI3yJ10AAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAujEA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAGgxAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAwBEAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACc
+MQAAAAAAAEgAAAACAAUArCIAAAQOAAABAAAAAAAAALAwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBwD0AAAAAQAAERZqCn4QAAAKJhYLAigCAAAGAigRAAAK
+bxIAAApyAQAAcG8TAAAKbxQAAApvFQAACnMWAAAKDAIoEQAACm8SAAAKcisAAHBvEwAACghvFwAA
+CoweAAABbxgAAAoCKBEAAApvGQAAChZyPwAAcHJfAABwCG8XAAAKDRIDKBoAAAooGwAACnKFAABw
+FhIBbxwAAAoCKBEAAAoWbx0AAAreVBMEAigRAAAKbxkAAAoWcj8AAHARBG8VAAAKcoUAAHAWbx4A
+AAomAigRAAAKbxIAAApyKwAAcG8TAAAKBoweAAABbxgAAAoCKBEAAAoXbx0AAAreACoBEAAAAAAL
+AJSfAFQQAAABEzACANgAAAAAAAAAAigRAAAKbxIAAApyhwAAcG8TAAAKFigfAAAKjCEAAAFvGAAA
+CgIoEQAACm8SAAAKcp8AAHBvEwAACnKFAABwbxgAAAoCKBEAAApvEgAACnK5AABwbxMAAAoWKCAA
+AAqMHgAAAW8YAAAKAigRAAAKbxIAAApyzwAAcG8TAAAKFighAAAKjCIAAAFvGAAACgIoEQAACm8S
+AAAKcuUAAHBvEwAACn4iAAAKjCMAAAFvGAAACgIoEQAACm8SAAAKcisAAHBvEwAAChYoIAAACowe
+AAABbxgAAAoqHgIoIwAACioeAigkAAAKKq5+AQAABC0ecv8AAHDQAwAAAiglAAAKbyYAAApzJwAA
+CoABAAAEfgEAAAQqGn4CAAAEKh4CgAIAAAQqGn4DAAAEKh4CKCgAAAoqLnMJAAAGgAMAAAQqAABC
+U0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAABQBAAAI34AALwEAAAYBgAAI1N0cmlu
+Z3MAAAAA1AoAAHQBAAAjVVMASAwAABAAAAAjR1VJRAAAAFgMAACsAQAAI0Jsb2IAAAAAAAAAAgAA
+AVcdogEJAwAAAPoBMwAWAAABAAAAJgAAAAUAAAAGAAAACgAAAAEAAAAoAAAAAgAAABAAAAABAAAA
+AgAAAAMAAAAEAAAAAQAAAAQAAAABAAAAAQAAAAAAvwMBAAAAAAAGAFEC0AQGAOAC0AQGAJ0BvQQP
+AEQFAAAGAMoBTQQGADQCTQQGABUCTQQGAMcCTQQGAHECTQQGAIoCTQQGAOEBTQQGAPwBIQMKAKUC
+bgMKABwBbgMGAGkEPgAGAF8E8AMGAPcD8AMGAIABvQQGANgF8AMGAIIE8AQGAHIEOAQOAFABqQMO
+ALEBqQMOADgBIwQGAGUB0AQGAD0D8AMKAJcDbgMSAJUFxwASAIgAxwAGAC8A8AMKAJIEbgMGAPoF
+8AMGACcA8AMGAJMA8AMGAL4A8AMGAOcA8AMGAJoA8AMGAAYGTQQAAAAANQAAAAAAAQABAAEAEAAI
+BAEAOQABAAEAAAAQAPcEUwVNAAEABAAAARAAnwVTBWEAAwAIAAMBAAC4BQAARQAEAAsAEQD8A68A
+EQAMAbMAEQB4ALcABgZnALsAVoCoBb4AVoDsAL4AUCAAAAAAhgAOBAYAAQBgIQAAAACGAJAFBgAB
+AEQiAAAAAIYYsAQGAAEATCIAAAAAgxiwBAYAAQBUIgAAAACTCH4EwgABAIAiAAAAAJMI9ADHAAEA
+hyIAAAAAkwgAAcwAAQCPIgAAAACWCN8F0gACAJYiAAAAAIYYsAQGAAIAniIAAAAAkRi2BNcAAgAA
+AAEAGwMJALAEAQARALAEBgAZALAECgApALAEEAAxALAEEAA5ALAEEABBALAEEABJALAEEABRALAE
+EABZALAEEABhALAEEABpALAEBgCRALAEBgC5ALAEFQDJALAEBgDRAA8GJQBxALAFKADZAIIFLQDh
+AOcDMgDpAP4COACZADsDPAB5ALAEEAB5AEQDQADpAAgDRADZAMYFSQDxADsDPADRANEFTgD5ABME
+VADZAOsFAQD5AKYEXwABASUAaAABAS0AbQABAZEAcgAZARIDdwBxALAEBgCZALAEBgAhAawAfAAh
+AQIGhQChALAEiwDBALAEBgAIABQApQAIABgAqgApAHMAEgEuAAsA6gAuABMA8wAuABsAEgEuACMA
+GwEuACsARAEuADMARAEuADsARAEuAEMAGwEuAEsASgEuAFMARAEuAFsAYQFDAGMAqgBJAHMAEgFh
+AHsAqgBjAGsAqgAbAAMAAQAEAAMAAACCBNsAAAAUAeAAAADjBeUAAgAFAAMAAgAGAAUAAQAHAAUA
+AgAIAAcABIAAAAEAAADcG8ZKAAAAAAAAAQAAAAQAAAAAAAAAAAAAAJMAbwAAAAAADgAAAAAAAAAA
+AAAAnABPAwAAAAAEAAAAAAAAAAAAAACTAPADAAAAAA4AAAAAAAAAAAAAAJwASAAAAAAAAAAAAAEA
+AAABBQAABQACAAAAAAAAU1RfYjY1ZWQwZTU1NTlkNDZkMTkxMWMyMzM0ZWY0NjRiODEAVG9JbnQz
+MgBUb0ludDY0ADxNb2R1bGU+AFN5c3RlbS5JTwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWRE
+VFMAdmFsdWVfXwBtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAVmFyaWFibGUAVG9Eb3VibGUAUnVu
+dGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUARGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNl
+cnZlci5EdHMuUnVudGltZQBUeXBlAEZhaWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVz
+b3VyY2VDdWx0dXJlAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRp
+bmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBE
+ZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJv
+d3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtB
+dHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0
+dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlv
+bnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0
+cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlB
+dHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAZ2V0X1ZhbHVlAHNldF9WYWx1
+ZQBNaW5WYWx1ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAGdldF9M
+ZW5ndGgATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIu
+RHRzLlRhc2tzLlNjcmlwdFRhc2sAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBvbmVudE1v
+ZGVsAFNUX2I2NWVkMGU1NTU5ZDQ2ZDE5MTFjMjMzNGVmNDY0YjgxLmRsbABnZXRfSXRlbQBTeXN0
+ZW0ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAEZpcmVJbmZvcm1hdGlvbgBTeXN0ZW0uQ29u
+ZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBFeGNlcHRp
+b24ARmlsZUluZm8AQ3VsdHVyZUluZm8AZ2V0X1Jlc291cmNlTWFuYWdlcgBFdmVudHNPYmplY3RX
+cmFwcGVyAEZpcmVFcnJvcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5S
+dW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF9iNjVlZDBlNTU1OWQ0
+NmQxOTExYzIzMzRlZjQ2NGI4MS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdn
+aW5nTW9kZXMAU1RfYjY1ZWQwZTU1NTlkNDZkMTkxMWMyMzM0ZWY0NjRiODEuUHJvcGVydGllcwBn
+ZXRfVmFyaWFibGVzAFJlc2V0VmFyaWFibGVzAFNldHRpbmdzAFN1Y2Nlc3MAZ2V0X0R0cwBTY3Jp
+cHRSZXN1bHRzAGdldF9FdmVudHMAQ29uY2F0AE9iamVjdABnZXRfRGVmYXVsdABzZXRfVGFza1Jl
+c3VsdABDb252ZXJ0AGdldF9Bc3NlbWJseQBFbXB0eQAAAAAAKVUAcwBlAHIAOgA6AEEAYwBoAEMA
+dQByAHIAZQBuAHQARgBpAGwAZQAAE0YAaQBsAGUAQgB5AHQAZQBzAAAfUwBjAHIAaQBwAHQAIAB0
+AG8AIABWAGEAcgA6ACAAACVGAGkAbABlACAAQgB5AHQAZQBzACAARgBvAHUAbgBkADoAIAAAAQAX
+QgBhAG4AawBCAGEAdABjAGgASQBEAAAZQgBhAG4AawBCAGEAdABjAGgATgBiAHIAABVCAGEAdABj
+AGgASQB0AGUAbQBzAAAVQgBhAHQAYwBoAFQAbwB0AGEAbAAAGUQAZQBwAG8AcwBpAHQAZQBEAGEA
+dABlAABxUwBUAF8AYgA2ADUAZQBkADAAZQA1ADUANQA5AGQANAA2AGQAMQA5ADEAMQBjADIAMwAz
+ADQAZQBmADQANgA0AGIAOAAxAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMA
+ZQBzAAAAAAAinSCdjSMkTKMzDqfTQaE4AAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFZCQcFCgIS
+PQoSQQIGDgQgABJtBCAAEnEFIAESdRwDIAAcAyAADgMgAAoEIAEBHAQgABJ9BQACDg4OCiAGAQgO
+Dg4IEAIIIAUCCA4ODggEAAEICAQAAQoIBAABDQgEBhGAjQgAARKAkRGAlQUgABKAmQcgAgEOEoCZ
+CLd6XFYZNOCJCImEXc2AgMyRBAAAAAAEAQAAAAMGElEDBhJVAwYSEAIGCAMGERQEAAASUQQAABJV
+BQABARJVBAAAEhADAAABBAgAElEECAASVQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhj
+ZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF9iNjVlZDBlNTU1OWQ0NmQxOTExYzIzMzRlZjQ2
+NGI4MQAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDE5AABJAQAaLk5FVEZyYW1ld29yayxWZXJz
+aW9uPXY0LjUBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNQC0AAAA
+zsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBW
+ZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYx
+OTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBB
+RFBBRFC0AAAAkDEAAAAAAAAAAAAAqjEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwxAAAAAAAA
+AAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAMZK3BsAAAEAxkrcGz8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8AYgA2ADUAZQBkADAAZQA1ADUANQA5AGQANAA2AGQAMQA5ADEAMQBjADIAMwAzADQA
+ZQBmADQANgA0AGIAOAAxAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADcAMQAzADIALgAxADkAMQA0ADIAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8AYgA2ADUAZQBkADAAZQA1ADUANQA5AGQANAA2AGQAMQA5ADEAMQBjADIAMwAzADQAZQBm
+ADQANgA0AGIAOAAxAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAxADkAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwBiADYANQBlAGQAMABlADUANQA1ADkAZAA0ADYAZAAxADkAMQAxAGMAMgAz
+ADMANABlAGYANAA2ADQAYgA4ADEALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8AYgA2ADUAZQBkADAAZQA1ADUANQA5AGQANAA2AGQAMQA5ADEAMQBjADIAMwAz
+ADQAZQBmADQANgA0AGIAOAAxAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA3ADEAMwAyAC4AMQA5ADEANAAyAAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADEAMwAyAC4AMQA5ADEANAAyAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAALwxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5C93C44D-AA06-42DE-8F15-6DCED8087171}"
+          DTS:From="Package\Foreach Loop Container-ACH files\Script Task to set ACH variables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{04858370-6B7E-4428-B1AB-62B14E80F3D5}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::BankBatchID] !=0"
+          DTS:From="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container-ACH files\File System Task Error Folder"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{05C0CDF1-B796-4F44-8B01-9468857422F9}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::BankBatchID] ==0"
+          DTS:From="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container-ACH files\Execute SQL Task to add bank batch Hdr" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{79C3815E-E754-4BF1-B218-E4B6DD4CA762}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[User::BankBatchID] ==0"
+          DTS:From="Package\Foreach Loop Container-ACH files\Execute SQL Task to add bank batch Hdr"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Foreach Loop Container-ACH files\Data Flow Task ACH details data load" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{CB4324C5-6334-423F-8DA4-8B8F17B38F60}"
+          DTS:EvalOp="4"
+          DTS:Expression="@[User::BankBatchID] == 0"
+          DTS:From="Package\Foreach Loop Container-ACH files\Execute SQL Task to add bank batch Hdr"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Foreach Loop Container-ACH files\File System Task Error Folder"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{A2D6D659-F762-40BE-AC9A-93828EB7CF90}"
+          DTS:From="Package\Foreach Loop Container-ACH files\Data Flow Task ACH details data load"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Foreach Loop Container-ACH files\File System Task Processed folder" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{FE0F9FA1-494C-4F6C-950B-2AB696CF1B5B}"
+          DTS:From="Package\Foreach Loop Container-ACH files\Data Flow Task ACH details data load"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Foreach Loop Container-ACH files\File System Task Error Folder"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{983F99CA-2876-4281-BB4B-C8C94B4BEBC8}"
+          DTS:ObjectName="{983F99CA-2876-4281-BB4B-C8C94B4BEBC8}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::AchCurrentFile" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{740362A6-D168-4953-9108-80C0BFB298D6}"
+      DTS:From="Package\File System Task-ACH Processed folder"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\File System Task-ACH Error folder" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{977AB03C-2816-4AAD-B528-A7FCFF383DF2}"
+      DTS:From="Package\File System Task-ACH Error folder"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Foreach Loop Container-ACH files" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="262,42"
+          Id="Package\File System Task-ACH Processed folder"
+          TopLeft="108,36" />
+        <NodeLayout
+          Size="239,42"
+          Id="Package\File System Task-ACH Error folder"
+          TopLeft="127,122" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="242.75,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.9932421875,13.47314453125,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="229,42"
+          Id="Package\Foreach Loop Container-ACH files\Script Task to set ACH variables"
+          TopLeft="33,8" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header"
+          TopLeft="178,103" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint]"
+          TopLeft="147.5,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="171.5,53"
+              Start="0,0"
+              End="171.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="167.5,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="167.5,26.5"
+                    Point2="171.5,26.5"
+                    Point3="171.5,30.5" />
+                  <mssgle:LineSegment
+                    End="171.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="67.7567578125,31.5,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Foreach Loop Container-ACH files\File System Task Error Folder"
+          TopLeft="375,421" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 1]"
+          TopLeft="364.666666666667,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="153.666666666667,276"
+              Start="0,0"
+              End="153.666666666667,268.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,133.711538461538" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,133.711538461538"
+                    Point2="0,137.711538461538"
+                    Point3="4,137.711538461538" />
+                  <mssgle:LineSegment
+                    End="149.666666666667,137.711538461538" />
+                  <mssgle:CubicBezierSegment
+                    Point1="149.666666666667,137.711538461538"
+                    Point2="153.666666666667,137.711538461538"
+                    Point3="153.666666666667,141.711538461538" />
+                  <mssgle:LineSegment
+                    End="153.666666666667,268.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="52.7233333333333,142.711538461538,48.22,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="272,42"
+          Id="Package\Foreach Loop Container-ACH files\Execute SQL Task to add bank batch Hdr"
+          TopLeft="5.5,253" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 2]"
+          TopLeft="273.333333333333,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-131.833333333333,108"
+              Start="0,0"
+              End="-131.833333333333,100.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5655853314527" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.5655853314527"
+                    Point2="0,43.5655853314527"
+                    Point3="-4,43.5655853314527" />
+                  <mssgle:LineSegment
+                    End="-127.833333333333,43.5655853314527" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-127.833333333333,43.5655853314527"
+                    Point2="-131.833333333333,43.5655853314527"
+                    Point3="-131.833333333333,47.5655853314527" />
+                  <mssgle:LineSegment
+                    End="-131.833333333333,100.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-92.5978971354167,48.5655853314527,53.3624609375,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Foreach Loop Container-ACH files\Data Flow Task ACH details data load"
+          TopLeft="5,369" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 3]"
+          TopLeft="97.5,295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,74"
+              Start="0,0"
+              End="35,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.859649122807" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.859649122807"
+                    Point2="0,29.859649122807"
+                    Point3="4,29.859649122807" />
+                  <mssgle:LineSegment
+                    End="31,29.859649122807" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31,29.859649122807"
+                    Point2="35,29.859649122807"
+                    Point3="35,33.859649122807" />
+                  <mssgle:LineSegment
+                    End="35,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.18123046875,34.859649122807,53.3624609375,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 4]"
+          TopLeft="185.5,295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="263.166666666667,126"
+              Start="0,0"
+              End="263.166666666667,118.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.8845038498717" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.8845038498717"
+                    Point2="0,62.8845038498717"
+                    Point3="4,62.8845038498717" />
+                  <mssgle:LineSegment
+                    End="259.166666666667,62.8845038498717" />
+                  <mssgle:CubicBezierSegment
+                    Point1="259.166666666667,62.8845038498717"
+                    Point2="263.166666666667,62.8845038498717"
+                    Point3="263.166666666667,66.8845038498717" />
+                  <mssgle:LineSegment
+                    End="263.166666666667,118.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="107.473333333333,67.8845038498717,48.22,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="239,42"
+          Id="Package\Foreach Loop Container-ACH files\File System Task Processed folder"
+          TopLeft="18,444" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 5]"
+          TopLeft="135,411">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.9932421875,7.97314453125,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files.PrecedenceConstraints[Constraint 6]"
+          TopLeft="260,390">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115,52"
+              Start="0,0"
+              End="107.5,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.5,0"
+                    Point2="57.5,0"
+                    Point3="57.5,4" />
+                  <mssgle:LineSegment
+                    End="57.5,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.5,48"
+                    Point2="57.5,52"
+                    Point3="61.5,52" />
+                  <mssgle:LineSegment
+                    End="107.5,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="42.25865234375,-15.7490234375,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="599,537"
+          Size="599,580"
+          Id="Package\Foreach Loop Container-ACH files"
+          TopLeft="47,218" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="246.5,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100,54"
+              Start="0,0"
+              End="100,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
+                  <mssgle:LineSegment
+                    End="96,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96,27"
+                    Point2="100,27"
+                    Point3="100,31" />
+                  <mssgle:LineSegment
+                    End="100,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="32.0067578125,32,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\XML Source for ACH"
+          TopLeft="110,49" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Header"
+          TopLeft="74,160" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header.Paths[HEADER]"
+          TopLeft="197,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23,69"
+              Start="0,0"
+              End="-23,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="-4,34.5" />
+                  <mssgle:LineSegment
+                    End="-19,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19,34.5"
+                    Point2="-23,34.5"
+                    Point3="-23,38.5" />
+                  <mssgle:LineSegment
+                    End="-23,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.68994140625,39.5,38.3798828125,9.2705078125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header\Script Component Details"
+          TopLeft="310,162" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container-ACH files\Data Flow Task to Validate File and Header.Paths[DETAIL]"
+          TopLeft="224.666666666667,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="184.333333333333,71"
+              Start="0,0"
+              End="184.333333333333,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.7881548974943" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.7881548974943"
+                    Point2="0,28.7881548974943"
+                    Point3="4,28.7881548974943" />
+                  <mssgle:LineSegment
+                    End="180.333333333333,28.7881548974943" />
+                  <mssgle:CubicBezierSegment
+                    Point1="180.333333333333,28.7881548974943"
+                    Point2="184.333333333333,28.7881548974943"
+                    Point3="184.333333333333,32.7881548974943" />
+                  <mssgle:LineSegment
+                    End="184.333333333333,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="75.0797330729167,33.7881548974943,34.1738671875,9.2705078125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
